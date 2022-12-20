@@ -12,14 +12,14 @@ function App() {
     page: '',
   })
 
-  const handleDataChange = () => {
+  const handleDataChange = (data) => {
     setData(data)
     console.log(data)
   }
 
   return (
     <div className='App'>
-      <InputT onChange={handleDataChange} data={data}></InputT>
+      <InputT handleDataChange={handleDataChange} data={data}></InputT>
 
       {/* <NasaPhoto data={data} /> */}
     </div>

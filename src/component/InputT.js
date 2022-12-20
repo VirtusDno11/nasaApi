@@ -1,11 +1,12 @@
 /** @format */
 
-function InputT({ data }, { onChange }) {
+function InputT({ data, handleDataChange }) {
   function handlFormSubmit(event) {
     event.preventDefault()
   }
   function handleInputCahnge(e, name) {
-    onChange({ ...data, [name]: e.target.value })
+    console.log(name)
+    handleDataChange({ ...data, [name]: e.target.value })
   }
 
   return (
@@ -83,11 +84,7 @@ function InputT({ data }, { onChange }) {
 
         <label>
           Pages:
-          <input
-            type='number'
-            value={data.page}
-            onChange={(e) => handleInputCahnge(e, 'page')}
-          />
+          <input type='number' onChange={(e) => handleInputCahnge(e, 'page')} />
         </label>
 
         <button type='submit'>Input</button>

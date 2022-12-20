@@ -11,9 +11,11 @@ export default function NasaPhoto({ data }) {
     fetchPhoto()
 
     async function fetchPhoto() {
-      const dataN = await axios.get(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/${data.rover}/photos?sol=${data.sol}&camera=${data.camera}&page=${data.page}&api_key=DBr1rIGm8dj1LupgZNAPJbMN3Vw3acQ7q2SdKruY`
-      )
+      const getRoversData = async () => {
+        return await axios.get(
+          `https://api.nasa.gov/mars-photos/api/v1/rovers/${data.rover}/photos?sol=${data.sol}&camera=${data.camera}&page=${data.page}&api_key=DBr1rIGm8dj1LupgZNAPJbMN3Vw3acQ7q2SdKruY`
+        )
+      }
 
       setPhotoData(dataN.data.photos)
       console.log(dataN.data.photos)
