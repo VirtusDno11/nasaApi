@@ -1,5 +1,5 @@
 /** @format */
-
+import axios from 'axios'
 async function LoadInput({
   initialdata,
   InitialDataChange,
@@ -13,3 +13,4 @@ async function LoadInput({
   InitialDataChange(initialdata)
   console.log(initialdata)
 }
+export default LoadInput
