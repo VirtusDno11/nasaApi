@@ -1,4 +1,11 @@
-.App {
-  text-align: center;
-}
+/** @format */
 
+.App {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80vh;
+  padding: 2rem;
+}

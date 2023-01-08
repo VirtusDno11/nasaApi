@@ -5,6 +5,7 @@ import Button from './UI/Button'
 import RoverSols from './RoverSols'
 
 import SolsCameras from './SolsVariableCameras'
+import styles from './VariableInput.module.css'
 
 function VariableInput({
   initialdata,
@@ -15,11 +16,11 @@ function VariableInput({
   handleDataReset,
 }) {
   return (
-    <>
+    <div className={styles.vinput}>
       <form onSubmit={handlFormSubmit}>
         <legend>Select a Rover:</legend>
         {initialdata.rovers.map((rover) => (
-          <div className='rovers' key={rover.id}>
+          <div className={styles.roverinput} key={rover.id}>
             <input
               key={rover.id}
               type='radio'
@@ -51,10 +52,10 @@ function VariableInput({
           </>
         )}
 
-        <Button onClick={handlFormSubmit}>Input</Button>
-        <Button onClick={handleDataReset}>Reset</Button>
+        {/* <Button onClick={handlFormSubmit}>Input</Button> */}
       </form>
-    </>
+      {data.rover && <Button onClick={handleDataReset}>Reset</Button>}
+    </div>
   )
 }
 export default VariableInput
