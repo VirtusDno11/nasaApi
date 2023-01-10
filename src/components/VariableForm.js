@@ -2,10 +2,10 @@
 // import { useState, useEffect } from 'react'
 // import axios from 'axios'
 import Button from './UI/Button'
-import RoverSols from './RoverSols'
+import SolInput from './SolInput'
 
-import SolsCameras from './SolsVariableCameras'
-import styles from './VariableInput.module.css'
+import CameraInput from './CameraInput'
+import styles from './VariableForm.module.css'
 
 function VariableInput({
   initialdata,
@@ -27,21 +27,22 @@ function VariableInput({
               name='rover'
               id={rover.name}
               value={rover.name}
+              checked={rover.name === data.rover}
               onChange={(e) => handleInputCahnge(e, 'rover')}
             />
             <label for={rover.name}>{`${rover.name}`}</label>
           </div>
         ))}
-        {data.rover && (
-          <RoverSols
+        {
+          <SolInput
             data={data}
             initialdata={initialdata}
             handleInputCahnge={handleInputCahnge}
           />
-        )}
-        {data.sol && (
+        }
+        {
           <>
-            <SolsCameras data={data} handleInputCahnge={handleInputCahnge} />
+            <CameraInput data={data} handleInputCahnge={handleInputCahnge} />
             {/* <label>
               Pages:
               <input
@@ -50,11 +51,11 @@ function VariableInput({
               />
             </label> */}
           </>
-        )}
+        }
 
         {/* <Button onClick={handlFormSubmit}>Input</Button> */}
       </form>
-      {data.rover && <Button onClick={handleDataReset}>Reset</Button>}
+      <Button onClick={handleDataReset}>Reset</Button>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import './App.css'
 import NasaPhoto from './components/Nasaphoto'
-import VariableInput from './components/VariableInput'
+import VariableInput from './components/VariableForm'
 // import LoadInput from './components/LoadInput'
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
     event.preventDefault()
   }
   const [data, setData] = useState({
-    rover: '',
-    sol: '',
+    rover: 'Curiosity',
+    sol: '1',
     camera: '',
   })
   const handleDataChange = (data) => {

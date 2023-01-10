@@ -16,6 +16,7 @@ export default function NasaPhoto({ data, handlFormSubmit }) {
       .then((resp) => {
         const data2 = resp.data
         setdataN(data2)
+        console.log(data2)
       })
   }, [data])
 

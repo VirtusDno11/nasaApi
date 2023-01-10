@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 80vh;
+  max-width: 80vw;
   max-height: 300px;
 }
 form {
@@ -12,5 +12,5 @@ form {
   justify-content: center;
   max-width: 70vh;
 }
-.roverinput {
-}
+/* .roverinput {
+} */
