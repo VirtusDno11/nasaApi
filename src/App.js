@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import './App.css'
 import NasaPhoto from './components/Nasaphoto'
-import VariableInput from './components/VariableForm'
+import VariableForm from './components/VariableForm'
 // import LoadInput from './components/LoadInput'
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
     axios.get(`${nasaRoversDataUrl}?api_key=${apiNasaKey}`).then((resp) => {
       const data1 = resp.data
       setinitialData(data1)
-      console.log(data1)
     })
   }
   useEffect(() => {
@@ -39,18 +38,38 @@ function App() {
   }
   function handleDataReset() {
     setData({
-      rover: '',
-      sol: '',
+      rover: 'Curiosity',
+      sol: '1',
       camera: '',
       page: '',
     })
   }
+  function dataCameraReset() {
+    data.camera = ''
+  }
+
+  const nasaRoversData1Url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
+  const [roverdata, detRoverdata] = useState(null)
+
+  const getRoversData1 = async () => {
+    let url = `${nasaRoversData1Url}${data.rover}/photos?sol=${data.sol}&api_key=${apiNasaKey}`
+    axios.get(url).then((resp) => {
+      const data2 = resp.data
+      detRoverdata(data2)
+    })
+  }
+  useEffect(() => {
+    getRoversData1()
+    dataCameraReset()
+    console.log(roverdata.photos)
+  }, [data.sol || data.rover])
 
   return (
     <div className='App'>
       {initialdata && (
-        <VariableInput
+        <VariableForm
           initialdata={initialdata}
+          roverdata={roverdata}
           apiNasaKey={apiNasaKey}
           data={data}
           handleDataChange={handleDataChange}
@@ -59,7 +78,7 @@ function App() {
           handlFormSubmit={handlFormSubmit}
         />
       )}
-      {data.camera && <NasaPhoto data={data}></NasaPhoto>}
+      {data.sol && <NasaPhoto roverdata={roverdata} data={data}></NasaPhoto>}
     </div>
   )
 }

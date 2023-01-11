@@ -9,6 +9,7 @@ import styles from './VariableForm.module.css'
 
 function VariableInput({
   initialdata,
+  roverdata,
   data,
   handleInputCahnge,
   handleDataChange,
@@ -42,7 +43,11 @@ function VariableInput({
         }
         {
           <>
-            <CameraInput data={data} handleInputCahnge={handleInputCahnge} />
+            <CameraInput
+              data={data}
+              roverdata={roverdata}
+              handleInputCahnge={handleInputCahnge}
+            />
             {/* <label>
               Pages:
               <input
